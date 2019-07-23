@@ -116,6 +116,12 @@ class avtMiliFileFormat : public avtMTMDFileFormat
                                        int, 
                                        const char *);
 
+   
+    //FIXME: testing
+    virtual vtkDataArray **GetTimeAndElementSpanVars(intVector,
+                                                     stringVector,
+                                                     int *);
+
     virtual void          PopulateDatabaseMetaData(avtDatabaseMetaData *, int);
 
     virtual void         *GetAuxiliaryData(const char *, 
