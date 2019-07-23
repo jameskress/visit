@@ -47,11 +47,14 @@
 
 #include <void_ref_ptr.h>
 
+#include <vectortypes.h>
+
 #include <avtQueryableSource.h>
 #include <avtDataRequest.h>
 #include <avtContract.h>
 
 class     vtkObject;
+class     vtkDataArray;
 
 class     avtInlinePipelineSource;
 class     avtMetaData;
@@ -161,7 +164,9 @@ class PIPELINE_API avtOriginatingSource : virtual public avtQueryableSource
                                        void *args, avtContract_p,
                                        VoidRefList &);
 
-    virtual int                    GetFoo(void) { return 0; }; //FIXME
+    virtual vtkDataArray         **FetchTimeAndElementSpanVars(intVector, 
+                                                               stringVector,
+                                                               int *);
 
     virtual vtkObject             *FetchArbitraryVTKObject(const char *name,
                                                            int dom, int ts,
