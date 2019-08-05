@@ -188,6 +188,7 @@ avtMTMDFileFormat::GetVectorVar(int, int, const char *)
 //  Purpose:
 //
 //  Arguments:
+//      <unnamed>    A domain to retrieve data from. 
 //      <unnamed>    A vector of elements to retrieve. 
 //      <unnamed>    A vector of variables to retrieve for each element.  
 //      <unnamed>    The time range to retreive. 
@@ -201,7 +202,8 @@ avtMTMDFileFormat::GetVectorVar(int, int, const char *)
 // ****************************************************************************
 
 vtkDataArray **
-avtMTMDFileFormat::GetTimeAndElementSpanVars(intVector, 
+avtMTMDFileFormat::GetTimeAndElementSpanVars(int,
+                                             intVector, 
                                              stringVector,
                                              int *)
 {

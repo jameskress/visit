@@ -3455,7 +3455,8 @@ avtGenericDatabase::GetAuxiliaryData(avtDataRequest_p spec,
 // ****************************************************************************
 
 vtkDataArray **
-avtGenericDatabase::GetTimeAndElementSpanVars(intVector elements,
+avtGenericDatabase::GetTimeAndElementSpanVars(int domain,
+                                              intVector elements,
                                               stringVector vars,
                                               int *tsRange)
 {
@@ -3465,7 +3466,7 @@ avtGenericDatabase::GetTimeAndElementSpanVars(intVector elements,
     if (MTMDInterface != NULL)
     {
         vtkDataArray **spanArray = MTMDInterface->
-            GetTimeAndElementSpanVars(elements, vars, tsRange);
+            GetTimeAndElementSpanVars(domain, elements, vars, tsRange);
         return spanArray;
     }
 
