@@ -1285,7 +1285,7 @@ avtMiliFileFormat::PopulateSubrecordInfo(int dom, int meshId)
         debug1 << "MILI: Encountered multiple state record formats! Is this in "
                << "use now???";
         char msg[1024];
-        sprintf(msg, "The Mili plugin is not set-up to handle multiple ",
+        sprintf(msg, "The Mili plugin is not set-up to handle multiple "
             "state record formats. Bailing.");
         EXCEPTION1(ImproperUseException, msg);
     }
@@ -1379,7 +1379,6 @@ avtMiliFileFormat::GetVar(int timestep,
                           int dom, 
                           const char *varPath)
 {
-    cerr << "TIMESTEP: " << timestep << endl;//FIXME
     int gvTimer = visitTimer->StartTimer();
     int meshId  = ExtractMeshIdFromPath(varPath);
 
@@ -2323,10 +2322,17 @@ avtMiliFileFormat::GetTimeAndElementSpanVars(int domain,
 
             for (int curC = startC; curC < stopC; ++curC)
             {
-                //vtkFloatArray *meshVar = 
-                //    (vtkFloatArray *) GetVar(curC, domain, vars[varIdx].c_str());
-                spanPtr[curC] = 10.0;
+                //TODO: need to make sure that this isn't a vector var
+                vtkFloatArray *meshVar = 
+                    (vtkFloatArray *) GetVar(curC, domain, vars[varIdx].c_str());
+
+                if (meshVar == NULL)
+                    cerr << "MESH VAR IS NULL!" << endl;//FIXME
+
+                spanPtr[curC] = meshVar->GetTuple1(elementIds[elIdx]);
             }
+
+            spanArrays[spanIdx++] = singleSpan;
         }
     }
 
