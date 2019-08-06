@@ -60,6 +60,7 @@ SET(ENGINERPC_SOURCES
 ApplyOperatorRPC.C
 ClearCacheRPC.C
 CloneNetworkRPC.C
+DBQueryOverTimeRPC.C
 ConstructDataBinningRPC.C
 DefineVirtualDatabaseRPC.C
 EnginePropertiesRPC.C 

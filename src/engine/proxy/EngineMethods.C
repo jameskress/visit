@@ -1040,6 +1040,17 @@ EngineMethods::Query(const std::vector<int> &nid, const QueryAttributes *atts,
     ClearStatus();
 }
 
+//FIXME: testing
+void
+EngineMethods::DBQueryOverTime(const int id, const QueryOverTimeAttributes *qa)
+{
+    state->DBQueryOverTimeRPC(id, qa);
+    if (state->DBQueryOverTimeRPC.GetStatus() == VisItRPC::error)
+    {
+        RECONSTITUTE_EXCEPTION(state->DBQueryOverTimeRPC.GetExceptionType(),
+                               state->DBQueryOverTimeRPC.Message());
+    }
+}
 
 // ****************************************************************************
 //  Method:  EngineMethods::GetQueryParameters

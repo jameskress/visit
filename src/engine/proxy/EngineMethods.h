@@ -169,6 +169,9 @@ public:
     void                     Query(const std::vector<int> &,
                                    const QueryAttributes *,
                                    QueryAttributes &);
+    //FIXME: testing
+    void                     DBQueryOverTime(const int,
+                                             const QueryOverTimeAttributes *);
     void                     ExportDatabases(const intVector &ids, const ExportDBAttributes &,
                                              const std::string &timeSuffix);
     void                     ConstructDataBinning(int, const ConstructDataBinningAttributes *);
