@@ -5299,6 +5299,7 @@ NetworkManager::AddQueryOverTimeFilter(QueryOverTimeAttributes *qA,
     // Put a QueryOverTimeFilter right after the transition to handle
     // the query.
     //
+    //TODO: could check if DirectDBQueryOverTime is available and add it here. 
     avtQueryOverTimeFilter *qf = new avtQueryOverTimeFilter(qA);
     if (*silr != NULL)
     {
