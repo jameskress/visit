@@ -19,8 +19,8 @@
 #include <string>
 #include <GlyphTypes.h>
 
+class PointGlyphHelper;
 class vtkLookupTable;
-class vtkPointGlyphMapperHelper;
 class vtkPointMapper;
 class vtkTrivialProducer;
 class vtkVisItGlyph3D;
@@ -37,6 +37,9 @@ class vtkVisItPolyDataNormals;
 //  Creation:   August 17, 2016
 //
 //  Modifications:
+//
+//    Kathleen Biagas, Fri Aug 16 10:11:42 PDT 2019
+//    Moved pointglyph helper out of this class to be used by others.
 //
 // ****************************************************************************
 
@@ -92,7 +95,7 @@ private:
   vtkPointGlyphMapper(const vtkPointGlyphMapper&);
   void operator=(const vtkPointGlyphMapper&);
 
-  vtkPointGlyphMapperHelper *Helper;
+  PointGlyphHelper *Helper;
 };
 
 #endif

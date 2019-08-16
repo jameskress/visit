@@ -15,7 +15,7 @@
 #   Add support for Manta.
 #
 #   Kathleen Biagas, Tue Jul 31 12:08:32 MST 2012
-#   Change CONFIGURE_FILE settings so things work correctly with 
+#   Change CONFIGURE_FILE settings so things work correctly with
 #   out-of-source builds.
 #
 #   Kathleen Biagas, Tue Sep  3 11:08:03 PDT 2013
@@ -47,7 +47,7 @@
 #   into volume plot.
 #
 #   Qi WU, Sat Jun 10 22:21:27 MST 2018
-#   Remove the old VISIT_OSPRAY configurations because they are too old. 
+#   Remove the old VISIT_OSPRAY configurations because they are too old.
 #   Additional Note: The FindOSPRay.cmake file is broken for a recent version
 #                    of OSPRay. We should use the built-inosprayConfig.cmake
 #                    file to find OSPRay instead.
@@ -60,6 +60,9 @@
 #   support of building plugins vs install on Windows. They are direct
 #   depencencies for this library, and CMake automagically pulls them in when
 #   compiling VisIt even if not listed, but not when building the plugins.
+#
+#   Kathleen Biagas, Fri Aug 16 10:34:02 PDT 2019
+#   Added PointGlyphHelper.
 #
 #****************************************************************************/
 
@@ -82,24 +85,25 @@ vtk/vtkOpenGLTexturedBackgroundMapper.C
 )
 
 SET(AVTPLOTTER_VTK_SOURCES
-vtk/InitVTKRendering.C 
-vtk/vtkAxesActor2D.C 
-vtk/vtkBackgroundActor.C 
+vtk/InitVTKRendering.C
+vtk/PointGlyphHelper.C
+vtk/vtkAxesActor2D.C
+vtk/vtkBackgroundActor.C
 vtk/vtkDepthSortPolyData2.C
-vtk/vtkLineLegend.C 
-vtk/vtkMultiFontVectorText.C 
-vtk/vtkParallelImageSpaceRedistributor.C 
-vtk/vtkPointGlyphMapper.C 
-vtk/vtkPointMapper.C 
-vtk/vtkTexturedBackgroundActor.C 
-vtk/vtkTimeSliderActor.C 
-vtk/vtkTriad2D.C 
-vtk/vtkVectorFontCharacterData.C 
-vtk/vtkVisItAxisActor.C 
-vtk/vtkVisItAxisActor2D.C 
-vtk/vtkVisItCubeAxesActor.C 
-vtk/vtkVisItScalarBarActor.C 
-vtk/vtkVisItScalarBarWithOpacityActor.C 
+vtk/vtkLineLegend.C
+vtk/vtkMultiFontVectorText.C
+vtk/vtkParallelImageSpaceRedistributor.C
+vtk/vtkPointGlyphMapper.C
+vtk/vtkPointMapper.C
+vtk/vtkTexturedBackgroundActor.C
+vtk/vtkTimeSliderActor.C
+vtk/vtkTriad2D.C
+vtk/vtkVectorFontCharacterData.C
+vtk/vtkVisItAxisActor.C
+vtk/vtkVisItAxisActor2D.C
+vtk/vtkVisItCubeAxesActor.C
+vtk/vtkVisItScalarBarActor.C
+vtk/vtkVisItScalarBarWithOpacityActor.C
 vtk/vtkVisItTextActor.C
 )
 
@@ -181,8 +185,8 @@ LINK_DIRECTORIES(${LIBRARY_OUTPUT_DIRECTORY})
 
 #********************************* SERIAL ************************************
 ADD_LIBRARY(avtplotter_ser ${AVTPLOTTER_SOURCES})
-TARGET_LINK_LIBRARIES(avtplotter_ser 
-    visitcommon avtmath avtview avtfilters_ser avtpipeline_ser visit_vtk 
+TARGET_LINK_LIBRARIES(avtplotter_ser
+    visitcommon avtmath avtview avtfilters_ser avtpipeline_ser visit_vtk
     lightweight_visit_vtk vtkCommonExecutionModel vtkFiltersHybrid
     vtkRenderingCore vtkRenderingFreeType vtkRenderingOpenGL2
     ${OPENGL_LIBRARIES})
