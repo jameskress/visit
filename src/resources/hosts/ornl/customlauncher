@@ -250,6 +250,7 @@ class ORNLLauncher(MainLauncher):
         self.jaguar = -1
         self.rhea = -1
         self.summit = -1
+        self.andes = -1
 
     def IsRunningOnRhea(self):
         if self.rhea == -1:
@@ -259,6 +260,15 @@ class ORNLLauncher(MainLauncher):
               self.domainname() == "ccs.ornl.gov":
               self.rhea = 1
         return self.rhea
+
+    def IsRunningOnAndes(self):
+        if self.andes == -1:
+           self.andes = 0
+           if self.parallelArgs.parallel and \
+              self.sectorname().startswith("andes") and \
+              self.domainname() == "andes.olcf.ornl.gov":
+              self.andes = 1
+        return self.andes
 
     def IsRunningOnSummit(self):
         if self.summit == -1:
